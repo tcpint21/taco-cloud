@@ -1,10 +1,12 @@
 spring:
-  application:
-    name: taco-cloud
-  datasource:
-    generate-unique-name: false
-    name: tacocloud
-  cassandra:
-    keyspace-name: tacocloud
-    local-datacenter: datacenter1
-    schema-action: recreate
+  data:
+    mongodb:
+      database: tacos
+  mongodb:
+    embedded:
+      version: 4.4.2 # de.flapdoodle.embed.mongo 4.20.0과 호환될 가능성이 높은 버전
+      port: 27017 # 기본 포트 명시 (자동으로 설정될 수도 있지만 명시적으로 지정)
+logging:
+  level:
+    org.springframework.boot.autoconfigure.mongo.embedded: DEBUG
+    de.flapdoodle.embed.mongo: DEBUG
